@@ -39,7 +39,7 @@ library BytesUtil {
         return result;
     }
 
-    function xorConcat(bytes32 b1, bytes32 b2) // 异或的逆运算为通过
+    function xorConcat(bytes32 b1, bytes32 b2) // 异或的逆运算为同或
     internal
     pure
     returns (bytes32)

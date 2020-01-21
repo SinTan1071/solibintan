@@ -2,6 +2,27 @@ pragma solidity ^0.5.0;
 
 library BytesUtil {
 
+    function trim(bytes32 x)
+    internal
+    pure
+    returns (bytes32)
+    {
+        bytes memory bytesString = new bytes(32);
+        uint charCount = 0;
+        for (uint j = 0; j < 32; j++) {
+            byte char = byte(bytes32(uint(x) * 2 ** (8 * j)));
+            if (char != 0) {
+                bytesString[charCount] = char;
+                charCount++;
+            }
+        }
+        bytes memory bytesStringTrimmed = new bytes(charCount);
+        for (j = 0; j < charCount; j++) {
+            bytesStringTrimmed[j] = bytesString[j];
+        }
+        return string(bytesStringTrimmed);
+    }
+
     /**
      * 对Bytes32进行concatenate
      */
@@ -18,7 +39,7 @@ library BytesUtil {
         return result;
     }
 
-    function xorConcat(bytes32 b1, bytes32 b2)
+    function xorConcat(bytes32 b1, bytes32 b2) // 异或的逆运算为通过
     internal
     pure
     returns (bytes32)

@@ -7,8 +7,8 @@ library IterableMapping
     KeyFlag[] keys;
     uint size;
   }
-  struct IndexValue { uint keyIndex; uint value; }
-  struct KeyFlag { uint key; bool deleted; }
+  struct IndexValue { uint keyIndex; uint value; } /*这个uint value值可以随便定义类型*/
+  struct KeyFlag { uint key; bool deleted; } /*这个uint key值可以随便定义类型*/
   function insert(itmap storage self, uint key, uint value) returns (bool replaced)
   {
     uint keyIndex = self.data[key].keyIndex;
